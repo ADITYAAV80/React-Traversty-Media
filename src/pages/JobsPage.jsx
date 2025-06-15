@@ -1,9 +1,10 @@
 import React from 'react'
+import JobListings from '../components/JobListings'
 
 const JobsPage = () => {
   return (
-    <div>
-      Jobs Page
+    <div className='px-4 py-6'>
+      <JobListings />
     </div>
   )
 }
