@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+
 const AddJob = ( {addNewJob}) => {
 
   const navigate = useNavigate();
@@ -24,10 +25,10 @@ const AddJob = ( {addNewJob}) => {
       salary,
       location,
       company: {
-          companyName,
-          companyDescription,
-          companyMail,
-          companyPhone,
+        "name": companyName,
+        "description":  companyDescription,
+        "contactEmail":  companyMail,
+        "contactPhone":  companyPhone,
       }
     }
     addNewJob(newJob);
