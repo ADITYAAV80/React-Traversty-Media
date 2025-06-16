@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-
+import { toast } from 'react-toastify';
 const AddJob = ( {addNewJob}) => {
 
   const navigate = useNavigate();
@@ -31,7 +31,9 @@ const AddJob = ( {addNewJob}) => {
       }
     }
     addNewJob(newJob);
-    return navigate('/jobs');
+    toast.success("New Job Listing Added Successfully");
+    navigate('/jobs');
+    
   }
   
   

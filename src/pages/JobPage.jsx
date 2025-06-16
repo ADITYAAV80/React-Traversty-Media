@@ -3,7 +3,8 @@ import React from 'react'
 import { useLoaderData, Link } from 'react-router-dom';
 import { FaArrowLeft, FaLocationArrow} from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
-
+import { toast } from 'react-toastify';
+  
 
 const JobPage = ({ deleteJob }) => {
 
@@ -32,9 +33,15 @@ const JobPage = ({ deleteJob }) => {
     const deleteTheJob = async()=>{
         const confirm = window.confirm("Are you sure ?")
         if (confirm){
-        deleteJob(job.id);
+        const res = await deleteJob(job.id);
+        if (res.ok){
+            toast.success("Job was deleted succesfully");
+            return navigate('/jobs')
         }
-        return navigate('/jobs')
+        else{
+            toast.error("Failed to delete job");
+        }
+        }
     };
   
 
