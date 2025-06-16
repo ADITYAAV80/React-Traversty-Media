@@ -2,14 +2,14 @@ import React from 'react'
 // import { useState,useEffect } from 'react';
 import { useLoaderData, Link } from 'react-router-dom';
 import { FaArrowLeft, FaLocationArrow} from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom';
 
-import Spinner from '../components/Spinner';
 
-const JobPage = () => {
+const JobPage = ({ deleteJob }) => {
 
     // const {id} = useParams();
     const job = useLoaderData();
-    console.log(job)
+    const navigate = useNavigate();
 
     // const [job,setJob] = useState(null);
     // const [loading,setLoading] = useState(true);
@@ -28,6 +28,14 @@ const JobPage = () => {
     //   } 
     //   fetchJob();
     // },[id])
+
+    const deleteTheJob = async()=>{
+        const confirm = window.confirm("Are you sure ?")
+        if (confirm){
+        deleteJob(job.id);
+        }
+        return navigate('/jobs')
+    };
   
 
     return (
@@ -114,6 +122,7 @@ const JobPage = () => {
                         </Link>
                         <button
                             className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                            onClick={deleteTheJob}
                         >
                             Delete Job
                         </button>
